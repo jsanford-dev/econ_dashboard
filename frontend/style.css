@@ -12,6 +12,28 @@ header {
     text-align: center;
 }
 
+nav#navbar {
+    background: #444;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.nav-button {
+    background: #eee;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.nav-button:hover {
+    background: #ddd;
+}
+
 #dashboard {
     padding: 20px;
 }
