@@ -32,7 +32,11 @@ function loadPage(page) {
                 const subContent = content.querySelector("#us-dashboard-content");
 
                 if (subpage === "Labour") {
-                    subContent.innerHTML = "<h3>Labour Statistics</h3><p>Unemployment rate, participation rate, etc.</p>";
+                    subContent.innerHTML = `
+                    <h3>Labour Statistics</h3>
+                    <p>Unemployment rate, participation rate, etc.</p>
+                    <img src="http://localhost:5000/chart/unemployment" alt="Unemployment Chart" style="max-width:100%; height:auto;">
+                    `;
                 } else if (subpage === "Inflation") {
                     subContent.innerHTML = "<h3>Inflation</h3><p>CPI, Core CPI, etc.</p>";
                 } else if (subpage === "Yields") {
