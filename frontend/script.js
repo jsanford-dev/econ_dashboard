@@ -35,7 +35,7 @@ function loadPage(page) {
                     subContent.innerHTML = `
                     <h3>Labour Statistics</h3>
                     <p>Unemployment rate, participation rate, etc.</p>
-                    <img src="http://localhost:5000/chart/unemployment" alt="Unemployment Chart" style="max-width:100%; height:auto;">
+                    <img src="http://localhost:5000/chart/non_farm_payrolls" alt="Non-Farm Payrolls Chart" style="max-width:100%; height:auto;">
                     `;
                 } else if (subpage === "Inflation") {
                     subContent.innerHTML = "<h3>Inflation</h3><p>CPI, Core CPI, etc.</p>";

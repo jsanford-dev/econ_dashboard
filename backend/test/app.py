@@ -1,34 +1,22 @@
 from flask import Flask, send_file, make_response
-import matplotlib.pyplot as plt
-import io
-import pandas as pd
-import numpy as np
-from datetime import datetime, timedelta
+from test_nfp import ProcessData
+from fredapi import Fred
+from dotenv import load_dotenv
+import os
 
 app = Flask(__name__)
 
-@app.route("/chart/unemployment")
+# Load FRED API key and fetch data once at startup
+load_dotenv()
+fred = Fred(api_key=os.getenv("FRED_API_KEY"))
+data = fred.get_series('USPRIV')
+
+@app.route("/chart/non_farm_payrolls")
 def unemployment_chart():
-    # Generate mock unemployment data
-    dates = pd.date_range(datetime.today() - timedelta(days=30), periods=30)
-    values = np.random.uniform(3.5, 4.5, size=30)
+    processor = ProcessData(data)
+    chart_buf = processor.generate_chart_buffer()
 
-    # Create the chart
-    fig, ax = plt.subplots()
-    ax.plot(dates, values, label="Unemployment Rate", color="blue")
-    ax.set_title("US Unemployment (Mock Data)")
-    ax.set_xlabel("Date")
-    ax.set_ylabel("Unemployment %")
-    ax.legend()
-
-    # Save the figure to a buffer
-    buf = io.BytesIO()
-    plt.savefig(buf, format='png')
-    plt.close(fig)
-    buf.seek(0)
-
-    # Build the response with manual CORS header
-    response = make_response(send_file(buf, mimetype='image/png'))
+    response = make_response(send_file(chart_buf, mimetype='image/png'))
     response.headers["Access-Control-Allow-Origin"] = "*"
     return response
 
