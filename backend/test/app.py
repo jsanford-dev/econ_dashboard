@@ -10,10 +10,11 @@ app = Flask(__name__)
 load_dotenv()
 fred = Fred(api_key=os.getenv("FRED_API_KEY"))
 data = fred.get_series('USPRIV')
+recession = fred.get_series('USREC')
 
 @app.route("/chart/non_farm_payrolls")
-def unemployment_chart():
-    processor = ProcessData(data)
+def non_farm_payroll_chart():
+    processor = ProcessData(data, recession)
     chart_buf = processor.generate_chart_buffer()
 
     response = make_response(send_file(chart_buf, mimetype='image/png'))

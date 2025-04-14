@@ -1,19 +1,31 @@
 import pandas as pd
 from dateutil.relativedelta import relativedelta
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
 import io
 
 class ProcessData():
-    def __init__(self, df):
+    def __init__(self, df, recession):
         """Initialise ProcessData class."""
         self.df = df
+        self.recession = recession
 
     def convert_to_dataframe(self):
         """Convert series to dataframe for convenience."""
         df = self.df
-        df.index.name = 'date'
         df.index = pd.to_datetime(df.index)
         df = df.to_frame(name="data").reset_index()
+        df = df.rename(columns={"index":"date"})
+
+        if self.recession is not None:
+            recession_df = self.recession.to_frame(name="recession")
+            recession_df.index = pd.to_datetime(recession_df.index)
+            recession_df = recession_df.reset_index().rename(
+                columns={"index":"date"}
+            )
+            df = pd.merge(df, recession_df, on="date", how="left")
+            df["recession"] = df["recession"].fillna(0)
+
         return df
     
     def calculate_bollinger_bands(
@@ -76,11 +88,26 @@ class ProcessData():
             color="lightgrey"
         )
 
+        # Add recession periods
+        if "recession" in self.df.columns:
+            recession_periods = self.df[self.df["recession"] == 1]
+            for i in range(len(recession_periods) - 1):
+                start = recession_periods["date"].iloc[i]
+                end = recession_periods["date"].iloc[i + 1]
+
+                if (end - start).days <=35:
+                    ax.axvspan(start, end, color='lightcoral', alpha=0.3)
+
+        recession_patch = mpatches.Patch(
+            color='lightcoral', alpha=0.3, label='Recession'
+        )
+
         ax.set_title("Change in US Non-Farm Payrolls (Total Private)")
         ax.set_ylabel("Thousands of Persons, Seasonally adjusted")
-        ax.legend()
-        ax.tick_params(axis='x', labelrotation=45)
         
+        ax.legend(handles=ax.get_legend_handles_labels()[0] + [recession_patch])
+        ax.tick_params(axis='x', labelrotation=45)
+
         plt.tight_layout()
 
         buf = io.BytesIO()
