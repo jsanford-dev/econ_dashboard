@@ -7,20 +7,29 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
+
+    <!--Header-->
     <header>
-        <h1>Macro Dashboard</h1>
+        <h1>Macroeconomics Dashboard</h1>
     </header>
 
-    <nav id="navbar">
-        <button class="nav-button" data-page="Home">Home</button>
-        <button class="nav-button" data-page="United States">United States</button>
-        <button class="nav-button" data-page="United Kingdom">United Kingdom</button>
-        <button class="nav-button" data-page="Europe">Europe</button>
-    </nav>
+    <!--Sub-navigation-->
+    <div id="sub-header">
+        <button id="home-button" class="nav-button">Home</button>
 
+        <div class="dropdown">
+            <button class="nav-button dropdown-toggle">Country ▾</button>
+            <div class="dropdown-menu">
+                <button class="dropdown-item" data-country="united-states">United States</button>
+                <!--Add more countries here later-->
+            </div>
+        </div>
+    </div>
+
+    <!--Main Dashboard-->
     <main>
         <div id="dashboard">
-            <!--Tables, charts and data will go here -->
+            <!--dashboard content goes here-->
         </div>
     </main>
 

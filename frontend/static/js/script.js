@@ -1,65 +1,45 @@
-console.log("Dashboard is loaded!")
-
 const dashboard = document.getElementById("dashboard");
+const homeButton = document.getElementById("home-button");
+const dropdownToggle = document.querySelector(".dropdown-toggle");
+const dropdown = document.querySelector(".dropdown");
+const countryItems = document.querySelectorAll(".dropdown-item");
 
-function loadPage(page) {
-    dashboard.innerHTML = "";
-
-    const content = document.createElement("div");
-    content.className = "data-card";
-
-    if (page === "Home") {
-        content.innerHTML = "<h2>Home</h2><p>This is the home page.</p>";
-    } else if (page === "United States") {
-        content.innerHTML = `
-            <div class="card-header">
-                <h2>United States</h2>
-                <div class="sub-nav">
-                    <button class="sub-button" data-subpage="Labour">Labour</button>
-                    <button class="sub-button" data-subpage="Inflation">Inflation</button>
-                    <button class="sub-button" data-subpage="Yields">Yields</button>
-                </div>
-            </div>
-            <div id="us-dashboard-content">
-                <p>Select a sub-category above to view data.</p>
-            </div>
-        `;
-
-        // Attach event Listeners to sub-buttons
-        content.querySelectorAll(".sub-button").forEach(button => {
-            button.addEventListener("click", () => {
-                const subpage = button.dataset.subpage;
-                const subContent = content.querySelector("#us-dashboard-content");
-
-                if (subpage === "Labour") {
-                    subContent.innerHTML = `
-                    <h3>Labour Statistics</h3>
-                    <p>Unemployment rate, participation rate, etc.</p>
-                    <img src="http://localhost:5000/chart/non_farm_payrolls" alt="Non-Farm Payrolls Chart" style="max-width:100%; height:auto;">
-                    `;
-                } else if (subpage === "Inflation") {
-                    subContent.innerHTML = "<h3>Inflation</h3><p>CPI, Core CPI, etc.</p>";
-                } else if (subpage === "Yields") {
-                    subContent.innerHTML = "<h3>Yields</h3><p>US Treasury Yields, curve data, etc.</p>";
-                }
-            });
-        });
-
-    } else if (page === "United Kingdom") {
-        content.innerHTML = "<h2>United Kingdom</h2><p>This is where UK data goes.</p>";
-    } else if (page === "Europe") {
-        content.innerHTML = "<h2>Europe</h2><p>This is where EU data goes.</p>";
-    }
-
-    dashboard.appendChild(content);
+function loadHome() {
+    dashboard.innerHTML = `
+        <div class='data-card'>
+            <h2>Welcome to the Macro Dashboard</h2>
+            <p>Select a country to view macroeconomic data</p>
+        </div>
+    `;
 }
 
-const navButtons = document.querySelectorAll(".nav-button");
-navButtons.forEach(button => {
-    button.addEventListener("click", () => {
-        const page = button.dataset.page;
-        loadPage(page);
+function loadCountry(countryCode) {
+    dashboard.innerHTML = `
+        <div class='data-card'>
+            <h2>${countryCode.replace("-", "").toUpperCase()}</h2>
+            <p>Display data for ${countryCode.replace("-", "")}</p>
+        </div>
+    `;
+}
+
+// Toggle dropdown open/close
+dropdownToggle.addEventListener("click", () => {
+    dropdown.classList.toggle("open");
+});
+
+// Home button loads home content
+homeButton.addEventListener("click", () => {
+    loadHome();
+});
+
+// Country buttons load specific country content
+countryItems.forEach(item => {
+    item.addEventListener("click", () => {
+        const selectedCountry = item.dataset.country;
+        dropdown.classList.remove("open");
+        loadCountry(selectedCountry);
     });
 });
 
-loadPage("Home");
+// Initial load
+loadHome();
