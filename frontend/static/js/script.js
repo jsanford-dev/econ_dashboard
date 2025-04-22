@@ -20,9 +20,28 @@ function loadCountryOverview(country) {
     dashboard.innerHTML = `
         <div class='data-card'>
             <h2>${countryLabel} Overview</h2>
-            <p>This is the overview page for ${countryLabel}. You can select a topic like Labor, Inflation, or Yields to explore more data.</p>
+            <p>Loading summary data...</p>
         </div>
     `;
+
+    fetch(`/api/data/${country}/overview`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            dashboard.innerHTML = renderTopicData(countryLabel, "Overview", data);
+        })
+        .catch(error => {
+            dashboard.innerHTML = `
+                <div class='data-card'>
+                    <h2>${countryLabel} Overview</h2>
+                    <p class="error"]>Failed to load overview: ${error.message}</p>
+                </div>
+            `;
+        });
 }
 
 // Load country sub-topic
