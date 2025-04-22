@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <Title>United States Overview</Title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>United States Macroeconomic Overview</h1>
+        <a href="{{ url_for('data.index') }}" class="nav-button">Home</a>
+    </header>
+
+    <main>
+        <div class="dashboard-container">
+            {% for label, value in data.items() %}
+                <div class="data-card">
+                    <h2>{{ label }}</h2>
+                    <p>{{ value }}</h2>
+                <div>
+            {% endfor %}
+        </div>
+    </main>
+</body>
+</html>

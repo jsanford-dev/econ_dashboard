@@ -8,10 +8,10 @@ data_bp = Blueprint('data', __name__)
 def index():
     return render_template('index.html')
 
-@data_bp.route('/api/data/united-states/overview')
-def us_overview_data():
+@data_bp.route('/united-states/overview')
+def united_states_overview():
     data = fetch_us_overview_data()
-    return jsonify(data)
+    return render_template('us_overview.html', data=data)
 
 @data_bp.route('/api/data/united-states/<topic>')
 def us_topic_data(topic):

@@ -11,7 +11,7 @@ fred = Fred(api_key=FRED_API_KEY)
 def fetch_us_overview_data():
     series_ids = {
         "Real GDP": "A191RL1Q225SBEA",
-        "Inflation (CPI YoY%)": "CPIAUCNS",
+        "Inflation (CPI YoY%)": "FPCPITOTLZGUSA",
         "Unemployment Rate (%)": "UNRATE",
         "10Y Treasury Yield (%)": "GS10",
         "Fed Funds Rate (%)": "FEDFUNDS"
