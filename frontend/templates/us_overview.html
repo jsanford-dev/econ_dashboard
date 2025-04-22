@@ -2,13 +2,28 @@
 
 {% block title %}United States Overview{% endblock %}
 
+{% block extra_styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/countries/us.css') }}">
+{% endblock %}
+
 {% block content %}
+<div class="country-header-section">
+    <img src="{{ url_for('static', filename='img/flags/us_flag.jpg') }}" alt="United States" class="header-background-image">
+
+    <div class="header-text">
+        <h2>United States</h2>
+        <p class="country-description">
+            The United States is the world's largest economy, characterized by a dynamic labour market, advanced financial system, and strong consumer-driven growth. This section provides a snapshot of key macroeconomic indicators.
+        </p>
+    </div>
+</div>
+
 <div id="dashboard">
     <div class="dashboard-container">
         {% for label, value in data.items() %}
             <div class="data-card">
-                <h2>{{ label }}</h2>
-                <p>{{ value }}</p>
+                <h3>{{ label }}</h3>
+                <p class="macro-value">{{ value }}</p>
             </div>
         {% endfor %}
     </div>

@@ -1,0 +1,74 @@
+/* US-specific styles */
+
+/* Country header section */
+.country-header-section {
+    position: relative;
+    background-color: #f0f4f8;
+    padding: 2rem;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+
+.header-background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    opacity: 0.1;
+}
+
+.header-text {
+    position: relative;
+    z-index: 2;
+}
+
+.header-text h2 {
+    font-size: 2.2rem;
+    color: #002855;
+    margin-bottom: 0.5rem;
+}
+
+.country-description {
+    font-size: 1rem;
+    color: #555;
+    max-width: 700px;
+    text-align: justify;
+}
+
+/* Data cards for US-specific metrics */
+.dashboard-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem 2rem;
+}
+
+.data-card {
+    background-color: #ffffff;
+    border: 1px solid #e3e3e3;
+    border-left: 6px solid #003e7e;
+    border-radius: 10px;
+    padding: 1.2rem 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease-in-out;
+}
+
+.data-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.data-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #003e7e;
+}
+
+.macro-value {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #0c2340;
+}
