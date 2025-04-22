@@ -1,45 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Macroeconomics Dashboard</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
+{% extends "base.html" %}
 
-    <!--Header-->
-    <header>
-        <h1>Macroeconomics Dashboard</h1>
-    </header>
+{% block title %}Macroeconomics Dashboard{% endblock %}
 
-    <!--Sub-navigation-->
-    <div id="sub-header">
-        <button id="home-button" class="nav-button">Home</button>
-
-        <div class="dropdown">
-            <button class="nav-button dropdown-toggle">Country ▾</button>
-            <div class="dropdown-menu">
-                <div class="dropdown-item has-submenu">
-                    <a href="/united-states/overview" class="dropdown-item country-header with-submenu">
-                        United States
-                    </a>
-                    <div class="dropdown-submenu">
-                        <button class="dropdown-item" data-country="united-states" data-topic="labour">Labour</button>
-                        <button class="dropdown-item" data-country="united-states" data-topic="inflation">Inflation</button>
-                        <button class="dropdown-item" data-country="united-states" data-topic="yields">Yields</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+{% block content %}
+<div id="dashboard">
+    <!-- Default homepage content -->
+    <div class='data-card'>
+        <h2>Welcome to the Macro Dashboard</h2>
+        <p>Select a country to view macroeconomic data</p>
     </div>
-    <!--Main Dashboard-->
-    <main>
-        <div id="dashboard">
-            <!--dashboard content goes here-->
-        </div>
-    </main>
-
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-</body>
-</html>
+</div>
+{% endblock %}

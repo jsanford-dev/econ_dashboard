@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="Viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Macroeconomic Dashboard{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+</head>
+<body>
+
+    <!--Header-->
+    <header>
+        <h1>Macroeconomic Dashboard</h1>
+    </header>
+
+    <!--Sub Header-->
+    <div id="sub-header">
+        <a href="{{ url_for('data.index') }}" class="nav-button">Home</a>
+
+        <div class="dropdown">
+            <button class="nav-button dropdown-toggle">Country ▾</button>
+            <div class="dropdown-menu">
+                <div class="dropdown-item has-submenu">
+                    <a href="/united-states/overview" class="dropdown-item country-header with-submenu">
+                        United States
+                    </a>
+                    <div class="dropdown-submenu">
+                        <button class="dropdown-item" data-country="united-states" data-topic="labour">Labour</button>
+                        <button class="dropdown-item" data-country="united-states" data-topic="inflation">Inflation</button>
+                        <button class="dropdown-item" data-country="united-states" data-topic="yields">Yields</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Main Dashboard Area-->
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
+
