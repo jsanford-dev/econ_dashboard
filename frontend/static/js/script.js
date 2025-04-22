@@ -35,9 +35,26 @@ function loadCountryTopic(country, topic) {
         <h2>${countryLabel} - ${topicLabel}</h2>
         <p>Loading data for ${topicLabel}...</p>
     </div>
-`;
+    `;
 
-    // TODO: Add API call here
+    fetch(`/api/data/${country}/${topic}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            dashboard.innerHTML = renderTopicData(countryLabel, topicLabel, data)
+        })
+        .catch(error => {
+            dashboard.innerHTML = `
+                <div class='data-card'>
+                    <h2>${countryLabel} - ${topicLabel}</h2>
+                    <p class="error">Failed to load data: ${error.message}</p>
+                </div>
+            `;
+        })
 }
 
 function renderTopicData(country, topic, data) {
