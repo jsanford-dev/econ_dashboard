@@ -3,12 +3,14 @@
 {% block title %}United States Overview{% endblock %}
 
 {% block content %}
-<div class="dashboard-container">
-    {% for label, value in data.items() %}
-        <div class="data-card">
-            <h2>{{ label }}</h2>
-            <p>{{ value }}</p>
-        </div>
-    {% endfor %}
+<div id="dashboard">
+    <div class="dashboard-container">
+        {% for label, value in data.items() %}
+            <div class="data-card">
+                <h2>{{ label }}</h2>
+                <p>{{ value }}</p>
+            </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}

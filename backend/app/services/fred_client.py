@@ -1,4 +1,6 @@
 import os
+from functools import lru_cache
+import time
 from dotenv import load_dotenv
 from fredapi import Fred
 
@@ -11,10 +13,13 @@ fred = Fred(api_key=FRED_API_KEY)
 def fetch_us_overview_data():
     series_ids = {
         "Real GDP": "A191RL1Q225SBEA",
+        "Real GDP Level":"GDPC1",
         "Inflation (CPI YoY%)": "FPCPITOTLZGUSA",
         "Unemployment Rate (%)": "UNRATE",
         "10Y Treasury Yield (%)": "GS10",
-        "Fed Funds Rate (%)": "FEDFUNDS"
+        "Fed Funds Rate (%)": "FEDFUNDS",
+        "Total Public Debt to GDP (%)":"GFDEGDQ188S",
+        "Population Level ('000s)":"CNP16OV"
     }
 
     data = {}
@@ -27,3 +32,8 @@ def fetch_us_overview_data():
             data[label] = f"Error: {str(e)}"
 
     return data
+
+@lru_cache(maxsize=1)
+def fetch_us_overview_data_cached():
+    print("Fetching fresh data from FRED...")
+    return fetch_us_overview_data()

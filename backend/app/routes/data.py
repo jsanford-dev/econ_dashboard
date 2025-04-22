@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, render_template, abort
-from backend.app.services.fred_client import fetch_us_overview_data
+from backend.app.services.fred_client import fetch_us_overview_data_cached
 
 
 data_bp = Blueprint('data', __name__)
@@ -10,7 +10,7 @@ def index():
 
 @data_bp.route('/united-states/overview')
 def united_states_overview():
-    data = fetch_us_overview_data()
+    data = fetch_us_overview_data_cached()
     return render_template('us_overview.html', data=data)
 
 @data_bp.route('/api/data/united-states/<topic>')
