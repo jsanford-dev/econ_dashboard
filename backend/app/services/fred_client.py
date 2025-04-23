@@ -1,6 +1,7 @@
 import os
 from functools import lru_cache
 import time
+import pandas as pd
 from dotenv import load_dotenv
 from fredapi import Fred
 
@@ -18,18 +19,28 @@ def fetch_us_overview_data():
         "Unemployment Rate (%)": "UNRATE",
         "10Y Treasury Yield (%)": "GS10",
         "Fed Funds Rate (%)": "FEDFUNDS",
-        "Total Public Debt to GDP (%)":"GFDEGDQ188S",
-        "Population Level ('000s)":"CNP16OV"
+        "Public Debt to GDP (%)":"GFDEGDQ188S",
+        "Population Level":"POPTHM"
     }
 
     data = {}
-    for label, series_ids in series_ids.items():
+    for label, series_id in series_ids.items():
         try:
-            series = fred.get_series(series_ids)
+            series = fred.get_series(series_id)
             latest_value = series.dropna().iloc[-1]
-            data[label] = round(float(latest_value), 2)
+            latest_date = series.dropna().index[-1].strftime('%b %Y')
+            info = fred.get_series_info(series_id)
+            last_updated = pd.to_datetime(info['last_updated']).strftime('%d %b %Y')
+            data[label] = {
+                "value": round(float(latest_value), 2),
+                "period": latest_date,
+                "last_updated": last_updated
+            }
         except Exception as e:
-            data[label] = f"Error: {str(e)}"
+            data[label] = {
+                "value": f"Error: {str(e)}",
+                "date": "N/A"
+            }
 
     return data
 

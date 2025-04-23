@@ -9,7 +9,7 @@
 {% block content %}
 <div class="country-header-section">
     <img src="{{ url_for('static', filename='img/flags/us_flag.jpg') }}" alt="United States" class="header-background-image">
-
+    
     <div class="header-text">
         <h2>United States</h2>
         <p class="country-description">
@@ -20,10 +20,24 @@
 
 <div id="dashboard">
     <div class="dashboard-container">
-        {% for label, value in data.items() %}
+        {% for label, datapoint in data.items() %}
             <div class="data-card {{ label | clean_label }}">
                 <h3>{{ label }}</h3>
-                <p class="macro-value">{{ value }}</p>
+                <p class="macro-value">
+                    {% if "Population" in label %}
+                      {{ (datapoint.value / 1000) | round(2) }}M
+                    {% elif "Real GDP Level" in label %}
+                      {{ (datapoint.value / 1000) | round(2) }}B
+                    {% elif "%" in label %}
+                      {{ datapoint.value | round(2) }}%
+                    {% else %}
+                      {{ datapoint.value | float | round(2) | format_thousands }}
+                    {% endif %}
+                  </p>
+                <p class="macro-subtext">
+                    For period: {{ datapoint.period }}<br>
+                    Last updated: {{ datapoint.last_updated }}
+                </p>
             </div>
         {% endfor %}
     </div>

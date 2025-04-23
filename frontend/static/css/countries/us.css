@@ -60,6 +60,7 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     transition: all 0.2s ease-in-out;
     font-family: 'Inter', sans-serif;
+    text-align: center;
 }
 
 .data-card:hover {
@@ -81,6 +82,7 @@
     font-weight: 600;
     color: #0c2340;
     margin-top: 0.3rem;
+    text-align: center;
 }
 
 
@@ -89,50 +91,65 @@
     background-color: #ffffff;
     border-left-color: #003e7e;
     font-family: 'Inter', sans-serif;
+    text-align: center;
 }
 
 .data-card.real-gdp-level {
     background-color: #ffffff;
     border-left-color: #003e7e;
     font-family: 'Inter', sans-serif;
+    text-align: center;
 }
 
 .data-card.inflation-cpi-yoy {
     background-color: #ffffff;
     border-left-color: #003e7e;
     font-family: 'Inter', sans-serif;
+    text-align: center;
 }
 
 .data-card.unemployment-rate {
     background-color: #ffffff;
     border-left-color: #003e7e;
     font-family: 'Inter', sans-serif;
+    text-align: center;
 }
 
 .data-card.teny-treasury-yield {
     background-color: #ffffff;
     border-left-color: #003e7e;
     font-family: 'Inter', sans-serif;
+    text-align: center;
 }
 
 .data-card.fed-funds-rate {
     background-color: #ffffff;
     border-left-color: #003e7e;
     font-family: 'Inter', sans-serif;
+    text-align: center;
 }
 
 .data-card.total-public-debt-to-gdp {
     background-color: #ffffff;
     border-left-color: #003e7e;
     font-family: 'Inter', sans-serif;
+    text-align: center;
 }
 
 .data-card.population-level-000s {
     background-color: #ffffff;
     border-left-color: #003e7e;
     font-family: 'Inter', sans-serif;
+    text-align: center;
 }
 
+.macro-subtext {
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 0.2rem;
+    font-style: italic;
+    text-align: left; 
+}
 
 /* === Responsive typography === */
 @media (max-width: 600px) {
