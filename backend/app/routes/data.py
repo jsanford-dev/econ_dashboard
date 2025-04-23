@@ -5,8 +5,8 @@ from backend.app.services.fred_client import fetch_us_overview_data_cached
 data_bp = Blueprint('data', __name__)
 
 @data_bp.route('/')
-def index():
-    return render_template('index.html')
+def homepage():
+    return render_template('homepage.html')
 
 @data_bp.route('/united-states/overview')
 def united_states_overview():
