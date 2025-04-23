@@ -21,7 +21,7 @@
 <div id="dashboard">
     <div class="dashboard-container">
         {% for label, value in data.items() %}
-            <div class="data-card">
+            <div class="data-card {{ label | clean_label }}">
                 <h3>{{ label }}</h3>
                 <p class="macro-value">{{ value }}</p>
             </div>

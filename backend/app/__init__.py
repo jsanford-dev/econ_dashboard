@@ -1,6 +1,7 @@
 from flask import Flask
 import os
 from backend.app.routes.data import data_bp
+from backend.app.filters import clean_label
 
 def create_app():
     BASE_DIR = os.path.abspath(os.path.dirname(__file__))
@@ -14,4 +15,8 @@ def create_app():
     )
 
     app.register_blueprint(data_bp)
+
+    # Filters for US overview page
+    app.jinja_env.filters['clean_label'] = clean_label 
+
     return app
