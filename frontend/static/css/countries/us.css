@@ -29,12 +29,14 @@
     font-size: 2.2rem;
     color: #002855;
     margin-bottom: 0.5rem;
+    font-family: 'Inter', sans-serif;
 }
 
 .country-description {
     font-size: 1rem;
     color: #555;
     max-width: 700px;
+    font-family: 'Inter', sans-serif;
     text-align: justify;
 }
 
@@ -57,6 +59,7 @@
     padding: 1.2rem 1.5rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     transition: all 0.2s ease-in-out;
+    font-family: 'Inter', sans-serif;
 }
 
 .data-card:hover {
@@ -70,6 +73,7 @@
     margin-bottom: 0.5rem;
     color: #003e7e;
     padding-top: 0.2rem;
+    font-family: 'Inter', sans-serif;
 }
 
 .macro-value {
@@ -82,43 +86,51 @@
 
 /* === Specific card overrides by metric === */
 .data-card.real-gdp-growth {
-    background-color: #f4fff7;
-    border-left-color: #2ca02c;
+    background-color: #ffffff;
+    border-left-color: #003e7e;
+    font-family: 'Inter', sans-serif;
 }
 
 .data-card.real-gdp-level {
-    background-color: #f0f8ff;
-    border-left-color: #1f77b4;
+    background-color: #ffffff;
+    border-left-color: #003e7e;
+    font-family: 'Inter', sans-serif;
 }
 
 .data-card.inflation-cpi-yoy {
-    background-color: #fff8e1;
-    border-left-color: #ff9800;
+    background-color: #ffffff;
+    border-left-color: #003e7e;
+    font-family: 'Inter', sans-serif;
 }
 
 .data-card.unemployment-rate {
-    background-color: #f3e5f5;
-    border-left-color: #9c27b0;
+    background-color: #ffffff;
+    border-left-color: #003e7e;
+    font-family: 'Inter', sans-serif;
 }
 
 .data-card.teny-treasury-yield {
-    background-color: #e0f2f1;
-    border-left-color: #00796b;
+    background-color: #ffffff;
+    border-left-color: #003e7e;
+    font-family: 'Inter', sans-serif;
 }
 
 .data-card.fed-funds-rate {
-    background-color: #e3f2fd;
-    border-left-color: #1565c0;
+    background-color: #ffffff;
+    border-left-color: #003e7e;
+    font-family: 'Inter', sans-serif;
 }
 
 .data-card.total-public-debt-to-gdp {
-    background-color: #ffebee;
-    border-left-color: #c62828;
+    background-color: #ffffff;
+    border-left-color: #003e7e;
+    font-family: 'Inter', sans-serif;
 }
 
 .data-card.population-level-000s {
-    background-color: #efebe9;
-    border-left-color: #6d4c41;
+    background-color: #ffffff;
+    border-left-color: #003e7e;
+    font-family: 'Inter', sans-serif;
 }
 
 
