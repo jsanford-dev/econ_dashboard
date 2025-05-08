@@ -15,7 +15,7 @@ def fetch_us_overview_data():
     series_ids = {
         "Real GDP Growth (%)": "A191RL1Q225SBEA",
         "Real GDP Level":"GDPC1",
-        "Inflation (CPI YoY%)": "FPCPITOTLZGUSA",
+        "Inflation (PCE YoY%)": "DPCCRV1Q225SBEA",
         "Unemployment Rate (%)": "UNRATE",
         "10Y Treasury Yield (%)": "GS10",
         "Fed Funds Rate (%)": "FEDFUNDS",
