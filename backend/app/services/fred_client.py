@@ -29,10 +29,12 @@ def fetch_us_overview_data():
             series = fred.get_series(series_id)
             latest_value = series.dropna().iloc[-1]
             latest_date = series.dropna().index[-1].strftime('%b %Y')
+            previous_value = series.dropna().iloc[-2]
             info = fred.get_series_info(series_id)
             last_updated = pd.to_datetime(info['last_updated']).strftime('%d %b %Y')
             data[label] = {
                 "value": round(float(latest_value), 2),
+                "previous": round(float(previous_value), 2),
                 "period": latest_date,
                 "last_updated": last_updated
             }
