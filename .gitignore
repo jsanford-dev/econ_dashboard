@@ -55,6 +55,12 @@ cover/
 *.mo
 *.pot
 
+# Alembic stuff:
+migrations/versions/*.pyc
+migrations/versions/__pycache__/
+migrations/logs/
+migrations/tmp/
+
 # Django stuff:
 *.log
 local_settings.py
@@ -172,3 +178,6 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# PostgreSQL Dump Files
+*.sql
