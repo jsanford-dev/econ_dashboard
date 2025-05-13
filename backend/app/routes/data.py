@@ -1,6 +1,10 @@
 from flask import Blueprint, jsonify, render_template, abort
-from backend.app.services.fred_client import fetch_us_overview_data_cached
 
+# Pull from database:
+#from backend.app.services.db_client import fetch_us_overview_data_cached
+
+# Pull from FRED directly
+from backend.app.services.fred_client import fetch_us_overview_data_cached
 
 data_bp = Blueprint('data', __name__)
 
@@ -11,6 +15,8 @@ def homepage():
 @data_bp.route('/united-states/overview')
 def united_states_overview():
     data = fetch_us_overview_data_cached()
+    if not data:
+        abort(404, description="Data not found in the database")
     return render_template('us_overview.html', data=data)
 
 @data_bp.route('/api/data/united-states/<topic>')

@@ -4,6 +4,8 @@ from alembic import context
 from dotenv import load_dotenv
 import os
 
+from backend.app.db.models.us_models import Base
+
 # Load environment variables from .env file
 load_dotenv()
 
@@ -27,7 +29,6 @@ if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
 # Import your models and set the target metadata
-from backend.app.db.models import Base  # Make sure the path is correct
 target_metadata = Base.metadata
 
 def run_migrations_offline() -> None:
