@@ -13,6 +13,26 @@ header h1 {
     padding: 0;
 }
 
+/* ========== Nav Button Styling ========== */
+.nav-button {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: #333;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.nav-button:visited {
+    color: #333;
+}
+
+.nav-button:hover {
+    color: #000;
+    background-color: #f2f2f2;
+}
+
 /* ========== Sub Header ========== */
 #sub-header {
     background: #eee;
@@ -69,5 +89,12 @@ body {
 
 .dropdown-item:hover {
     background: #f2f2f2;
+}
+
+.dropdown-menu a {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: #333;
+    text-decoration: none;
 }
 
