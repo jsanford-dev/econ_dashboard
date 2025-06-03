@@ -85,6 +85,23 @@
     text-align: center;
 }
 
+.indicator {
+    font-size: 0.9em;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+.indicator.up {
+    color: green;
+}
+
+.indicator.down {
+    color: red;
+}
+
+.indicator.neutral {
+    color: gray;
+}
 
 /* === Specific card overrides by metric === */
 .data-card.real-gdp-growth {

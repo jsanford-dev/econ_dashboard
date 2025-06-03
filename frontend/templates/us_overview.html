@@ -23,7 +23,7 @@
         {% for label, datapoint in data.items() %}
             <div class="data-card {{ label | clean_label }}">
                 <h3>{{ label }}</h3>
-                <p class="macro-value">
+                  <p class="macro-value">
                     {% if "Population" in label %}
                       {{ (datapoint.value / 1000) | round(2) }}M
                     {% elif "Real GDP Level" in label %}
@@ -33,10 +33,28 @@
                     {% else %}
                       {{ datapoint.value | float | round(2) | format_thousands }}
                     {% endif %}
-                  </p>
+                
+                    {% if datapoint.value > datapoint.previous %}
+                        <span class="indicator up">▲</span>
+                    {% elif datapoint.value < datapoint.previous %}
+                        <span class="indicator down">▼</span>
+                    {% else %}
+                        <span class="indicator neutral">-</span>
+                    {% endif %}
+                </p>
                 <p class="macro-subtext">
-                    For period: {{ datapoint.period }}<br>
-                    Last updated: {{ datapoint.last_updated }}
+                  For period: {{ datapoint.period }}<br>
+                  Last updated: {{ datapoint.last_updated }} <br>
+                  Previously:
+                  {% if "Population" in label %}
+                    {{ (datapoint.previous / 1000) | round(2) }}M
+                  {% elif "Real GDP Level" in label %}
+                    {{ (datapoint.previous / 1000) | round(2) }}B
+                  {% elif "%" in label %}
+                    {{ datapoint.previous | round(2) }}%
+                  {% else %}
+                    {{ datapoint.previous | float | round(2) | format_thousands }}
+                  {% endif %}
                 </p>
             </div>
         {% endfor %}
