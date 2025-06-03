@@ -1,9 +1,14 @@
+/* ========== Base ========== */
+body {
+    background-color: #fff;
+    font-family: 'Inter', sans-serif;
+}
+
 /* ========== Header ========== */
 header {
     background: #001f3f;
     color: #fff;
     padding: 16px 20px;
-    font-family: 'Inter', sans-serif;
     text-align: center;
 }
 
@@ -11,26 +16,6 @@ header h1 {
     font-size: 1.8rem;
     margin: 0;
     padding: 0;
-}
-
-/* ========== Nav Button Styling ========== */
-.nav-button {
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
-    color: #333;
-    text-decoration: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-.nav-button:visited {
-    color: #333;
-}
-
-.nav-button:hover {
-    color: #000;
-    background-color: #f2f2f2;
 }
 
 /* ========== Sub Header ========== */
@@ -42,6 +27,28 @@ header h1 {
     gap: 16px;
 }
 
+/* ========== Navigation Buttons ========== */
+.nav-button {
+    font-size: 1rem;
+    font-family: inherit;
+    color: #333;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+.nav-button:visited {
+    color: #333;
+}
+
+.nav-button:hover {
+    color: #000;
+    background-color: #f2f2f2;
+}
+
 /* ========== Dropdown ========== */
 .dropdown {
     position: relative;
@@ -51,12 +58,16 @@ header h1 {
     position: relative;
 }
 
+.dropdown.open .dropdown-menu {
+    display: block;
+}
+
 .dropdown-menu {
     display: none;
     position: absolute;
     top: 100%;
     left: 0;
-    background: white;
+    background: #fff;
     border: 1px solid #ccc;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     z-index: 10;
@@ -65,36 +76,56 @@ header h1 {
     border-radius: 4px;
 }
 
-.dropdown.open .dropdown-menu {
-    display: block;
-}
-
-/* ========== Body ============*/
-body {
-    background-color: #fff;
-}
-
 /* ========== Dropdown Items ========== */
 .dropdown-item {
     display: block;
     width: 100%;
-    box-sizing: border-box;  /* Ensures padding is included within width */
-    padding: 8px 16px;        /* Reasonable vertical + horizontal padding */
+    box-sizing: border-box;
+    padding: 8px 16px;
     background: none;
     border: none;
     text-align: left;
     cursor: pointer;
 }
 
-
 .dropdown-item:hover {
     background: #f2f2f2;
 }
 
+.dropdown-item.has-submenu {
+    position: relative;
+}
+
+/* ========== Nested Dropdowns ========== */
+.dropdown-submenu {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    background: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    min-width: 180px;
+    z-index: 100;
+}
+
+.dropdown-item.has-submenu:hover .dropdown-submenu {
+    display: block;
+}
+
+/* ========== Dropdown Links ========== */
 .dropdown-menu a {
-    font-family: 'Inter', sans-serif;
+    font-family: inherit;
     font-size: 1rem;
     color: #333;
     text-decoration: none;
 }
 
+.dropdown-menu a:visited {
+    color: #333;
+}
+
+.dropdown-menu a:hover {
+    color: #000;
+    background-color: #f2f2f2;
+}
