@@ -7,7 +7,7 @@ A project to help me learn javascript/ frontend development. The idea is to have
 
 This page displays key macroeconomic indicators sourced from the FRED API. For each variable, it shows the latest and previous values, the direction of change, the reference period, and the most recent update timestamp.
 
-![US_Overview](\assets\us_dashboard_screenshot.png)
+![US_Overview](assets/us_dashboard_screenshot.png)
 
 ## 🚀 Getting Started
 
