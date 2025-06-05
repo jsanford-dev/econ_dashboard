@@ -30,7 +30,7 @@ Create a ```.env``` file in your project root with your API key details. An exam
 FRED_API_KEY=your_fred_api_key_here
 ```
 
-Run th eproject:
+Run th project:
 
 ```
 python main.py
